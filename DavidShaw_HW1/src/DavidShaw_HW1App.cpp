@@ -23,7 +23,7 @@ class DavidShaw_HW1App : public AppBasic {
 
 private:
 	Surface* mySurface_; //The Surface object whose pixel array we will modify
-	gl::Texture* myTexture_; //The Texture object that we use to display our Surface 
+	//gl::Texture* myTexture_; //The Texture object that we use to display our Surface 
 	uint8_t* dataArray;
 	Surface space_Marine;
 	
@@ -40,24 +40,29 @@ void DavidShaw_HW1App::setup()
 
 {
 	mySurface_ = new Surface(kTextureSize,kTextureSize,false);
-	myTexture_ = new gl::Texture(*mySurface_);
+	//myTexture_ = new gl::Texture(*mySurface_);
 
 	space_Marine = (loadImage( loadResource(RES_HAMMER) ));
 	//gl::Texture space_Marine(loadImage( loadResource(RES_HAMMER) ));
 	dataArray = (*mySurface_).getData();
+	uint8_t* sm = space_Marine.getData();
+	for (int i = 0; i < 1024*1024*3; i++) {
+		dataArray[i] = sm[i];
+	}
 
 }
 
 void DavidShaw_HW1App::prepareSettings(Settings* settings) {
-	(*settings).setWindowSize(kAppWidth,kAppHeight);
+//	(*settings).setWindowSize(kAppWidth,kAppHeight);
+	(*settings).setWindowSize(kTextureSize,kTextureSize);
 	(*settings).setResizable(false);
 }
 
-void DavidShaw_HW1App::drawSquare(uint8_t* pixels,int centerX, int centerY) {
+void DavidShaw_HW1App::drawSquare(uint8_t* pixels,int posX, int posY) {
 
-	int startX = centerX*3*1024;//(centerX - 25)*3;
-	int startY = centerY*3;//(centerY - 25)*3;
-	for (int i = startX+startY;i < ((startX + startY)+ 150); i+=3) {
+	int startX = posY*3*1024;
+	int startY = posX*3;
+	for (int i = startX+startY;i < (startX + startY+ 150); i+=3) {
 		pixels[i] = 255;
 		pixels[i + 1] = 255;
 		pixels[i + 2] = 0;
@@ -73,17 +78,17 @@ void DavidShaw_HW1App::mouseDown( MouseEvent event )
 
 void DavidShaw_HW1App::update()
 {
-	uint8_t* dataArray = (*mySurface_).getData();
+	//uint8_t* dataArray = (*mySurface_).getData();
 		
-	(*myTexture_).update(*mySurface_,(*mySurface_).getBounds());
+	//(*myTexture_).update(*mySurface_,(*mySurface_).getBounds());
 		
 }
 
 void DavidShaw_HW1App::draw()
 {
 	//gl::draw(space_Marine);
-	//gl::draw(*mySurface_);
-	gl::draw(*myTexture_);
+	gl::draw(*mySurface_);
+	//gl::draw(*myTexture_);
 	
 }
 
