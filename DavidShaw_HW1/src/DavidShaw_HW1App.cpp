@@ -1,4 +1,4 @@
-
+//float* kernal = {1/9.0 1/9.0 ... 1/9.0};
 #include "cinder/app/AppBasic.h"
 #include "cinder/gl/gl.h"
 #include "cinder/gl/Texture.h"
@@ -57,12 +57,10 @@ void DavidShaw_HW1App::drawSquare(uint8_t* pixels,int centerX, int centerY) {
 
 	int startX = centerX*3*1024;//(centerX - 25)*3;
 	int startY = centerY*3;//(centerY - 25)*3;
-	for (int i = startX+startY;i < startX + 150; i+=3) {
+	for (int i = startX+startY;i < ((startX + startY)+ 150); i+=3) {
 		pixels[i] = 255;
 		pixels[i + 1] = 255;
 		pixels[i + 2] = 0;
-
-
 	}
 
 }
@@ -75,9 +73,9 @@ void DavidShaw_HW1App::mouseDown( MouseEvent event )
 
 void DavidShaw_HW1App::update()
 {
-	//uint8_t* 
-		dataArray = (*mySurface_).getData();
-		(*myTexture_).update(*mySurface_,(*mySurface_).getBounds());
+	uint8_t* dataArray = (*mySurface_).getData();
+		
+	(*myTexture_).update(*mySurface_,(*mySurface_).getBounds());
 		
 }
 
