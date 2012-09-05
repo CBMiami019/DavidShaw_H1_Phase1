@@ -70,9 +70,10 @@ void DavidShaw_HW1App::prepareSettings(Settings* settings) {
 	(*settings).setResizable(false);
 }
 
+//Attempt at doing the drawSquare method part of the assignement, couldn't
+//figure out how to do the vertical lines.
 void DavidShaw_HW1App::drawSquare(uint8_t* pixels,int posX, int posY) {
 
-	
 	int startX = posX*3;
 	int startY = posY*3*1024;
 	for (int i = startX+startY;i < (startX + startY+ 150); i+=3) {
@@ -83,6 +84,7 @@ void DavidShaw_HW1App::drawSquare(uint8_t* pixels,int posX, int posY) {
 		pixels[i+150*1024] = 255;
 		pixels[i+150*1024 + 1] = 255;
 		pixels[i+150*1024 + 2] = 0;
+
 	}
 
 }
@@ -108,6 +110,8 @@ void DavidShaw_HW1App::blur(uint8_t* pixels) {
 //HIT THE T KEY TO APPLY TINT
 void DavidShaw_HW1App::tint(uint8_t* pixels) {
 	
+	//For every blue input of a pixel, we add 85 to it, which is 1/3 of the full value of 255. anything higher than 170 we just make it
+	//full blue.
 	for(int i = 0; i < 1024*1024*3; i+=3) {
 		if(pixels[i+2] >= 170) {
 			pixels[i+2] = 255;
@@ -117,13 +121,11 @@ void DavidShaw_HW1App::tint(uint8_t* pixels) {
 
 }
 
-
 void DavidShaw_HW1App::mouseDown( MouseEvent event )
 {
 	if(event.isLeft())
 		drawSquare(dataArray,event.getX(), event.getY());
 }
-
 
 void DavidShaw_HW1App::keyDown(KeyEvent event) {
 	if(event.getCode() == event.KEY_b)
@@ -148,11 +150,10 @@ void DavidShaw_HW1App::update()
 		dataArray[i + 2] = 0;
 	}
 
-	if(gradCount > 1024*1024*3)
+	if(gradCount > 1024*512*3)
 		gradCount = 0;
 
 }
-
 
 void DavidShaw_HW1App::draw()
 {
