@@ -39,6 +39,9 @@ private:
 	Surface space_Marine;
 	int gradCount;
 	int redCount;
+
+	//Boolean added by Carter 
+	bool redDone;
 	
 };
 	//Width and height of the screen
@@ -47,8 +50,11 @@ private:
 	static const int kTextureSize=1024; 
 
 void DavidShaw_HW1App::setup()
-
 {
+	//Setting the boolean to false here (Carter):
+	redDone = false;
+
+
 	mySurface_ = new Surface(kTextureSize,kTextureSize,false);
 
 	gradCount = 0;
@@ -141,17 +147,29 @@ void DavidShaw_HW1App::update()
 	//goal of this is to slowly change from red to black at the top row and then continue down, when full black is reached it starts
 	//from red again, the part where it starts over was not made on purpose.
 	//Satisfies PART A.4 of the homework 1
+
+
+	//Comment from Carter:
+	//If you want it to stop after one iteration, couldn't you hold a boolean inside it?
+	//I'll add one inside an if statement and see it if works for you
 	gradCount++;
 	redCount--;
 
-	for(int i = gradCount*3*1024; i < (gradCount+1)*1024*3;i+=3) {
+	if (redDone == false){
+		for(int i = gradCount*3*1024; i < (gradCount+1)*1024*3;i+=3) {
 		dataArray[i] = redCount;
 		dataArray[i + 1] = 0;
 		dataArray[i + 2] = 0;
+		}
 	}
 
-	if(gradCount > 1024*512*3)
-		gradCount = 0;
+	//By the way, I commented this out and I don't know what it does
+	//if(gradCount > 1024*512*3){
+		//gradCount = 0;
+	//}
+	//From Carter:
+	if (redCount == 1)
+		redDone = true;
 
 }
 

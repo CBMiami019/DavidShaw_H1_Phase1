@@ -47,7 +47,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\Users\David\Desktop\Cinder\cinder_0.8.4_vc2010\boost;C:\Users\David\Desktop\Cinder\cinder_0.8.4_vc2010\include;..\include;..\..\..\\include;..\..\..\\boost</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Data\Carter\CSE 274\cinder_0.8.4_vc2010\include;C:\Data\Carter\CSE 274\cinder_0.8.4_vc2010\boost;C:\Users\David\Desktop\Cinder\cinder_0.8.4_vc2010\boost;C:\Users\David\Desktop\Cinder\cinder_0.8.4_vc2010\include;..\include;..\..\..\\include;..\..\..\\boost</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -58,11 +58,11 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>C:\Users\David\Desktop\Cinder\cinder_0.8.4_vc2010\include;..\..\..\\include;..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Data\Carter\CSE 274\cinder_0.8.4_vc2010\include;C:\Users\David\Desktop\Cinder\cinder_0.8.4_vc2010\include;..\..\..\\include;..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>cinder_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Users\David\Desktop\Cinder\cinder_0.8.4_vc2010\lib\msw;C:\Users\David\Desktop\Cinder\cinder_0.8.4_vc2010\lib;..\..\..\\lib;..\..\..\\lib\msw;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Data\Carter\CSE 274\cinder_0.8.4_vc2010\lib\msw;C:\Data\Carter\CSE 274\cinder_0.8.4_vc2010\lib;C:\Users\David\Desktop\Cinder\cinder_0.8.4_vc2010\lib\msw;C:\Users\David\Desktop\Cinder\cinder_0.8.4_vc2010\lib;..\..\..\\lib;..\..\..\\lib\msw;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
